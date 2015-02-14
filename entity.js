@@ -4,13 +4,15 @@ function Entity(id, width, height, xCoord, yCoord) {
 	this.height = height;
 	this.xCoord = xCoord;
 	this.yCoord = yCoord;
-	console.log("Entity Created\n ID: " + id + "\n Width: " + width + "\n Height: " +height);
+	console.log("" +
+		"Width: " + width +
+		"\n Height: " + height +
+		"\n x: " + xCoord +
+		"\n y: " + yCoord);
 }
 
-function Person(name, id, width, height) {
+function Person(name, id, width, height, xCoord, yCoord) {
 	this.name = name;
 	console.log("Person Created\n Name: " + name + "\n ID: " + id);
-	Entity.call(this, id, width, height);
+	Entity.call(this, id, width, height, xCoord, yCoord);
 }
-
-var person = new Person("Jeremy", 1, 100, 200);
