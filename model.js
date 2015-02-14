@@ -32,6 +32,11 @@ A_Entity.prototype.addEntity = function(entity) {
 	this.List_children.push(entity);
 	this.children++;
 };
+A_Entity.prototype.interactWith = function(entity, x, y) {
+	var childrenLenth = this.List_children.length;
+	for(var i = 0; i < childrenLenth; i++)
+		this.List_children[i].interactWith(entity, x, y);
+};
 
 // World Model
 function World(name, width, height) {
@@ -45,9 +50,7 @@ World.prototype.contains = function(entity) {
 	return A_Entity.prototype.contains.call(this, entity);
 };
 World.prototype.interactWith = function(entity, x, y) {
-	var childrenLenth = this.List_children.length;
-	for(var i = 0; i < childrenLenth; i++)
-		this.List_children[i].interactWith(entity, x, y);
+	A_Entity.prototype.interactWith.call(this, entity, x, y);
 };
 World.prototype.render = function(view) {
 	view.renderWorld(this);
@@ -69,7 +72,7 @@ Person.prototype.contains = function(entity) {
 };
 Person.prototype.interactWith = function(entity, x, y) {
 };
-Person.prototype.move = function(entity, x, y) {
+Person.prototype.moveIn = function(entity, x, y) {
 	this.xCoord += x;
 	this.yCoord += y;
 	entity.interactWith(this, x, y);
@@ -96,10 +99,7 @@ Wall.prototype.interactWith = function(entity, x, y) {
 	if(this.contains(entity)) {
 		entity.xCoord += x*-1;
 		entity.yCoord += y*-1;
-
-		var childrenLenth = this.List_children.length;
-		for(var i = 0; i < childrenLenth; i++)
-			this.List_children[i].interactWith(entity, x, y);
+		A_Entity.prototype.interactWith.call(this, entity, x, y);
 	}
 };
 Wall.prototype.render = function(view) {
@@ -112,12 +112,12 @@ Wall.prototype.update = function(observer) {
 // Room Model
 function Room(width, height, xCoord, yCoord, zCoord) {
 	A_Entity.call(this, width, height, xCoord, yCoord, zCoord);
+	
 	this.addEntity(new Wall(width, 5, xCoord, yCoord, zCoord));
 	this.addEntity(new Wall(width/2 - 20, 5, xCoord, yCoord + this.height - 5, zCoord));
 	this.addEntity(new Wall(width/2 - 20, 5, xCoord + width/2 + 20, yCoord + this.height - 5, zCoord));
 	this.addEntity(new Wall(5, height, xCoord, yCoord, zCoord));
 	this.addEntity(new Wall(5, height, xCoord + this.width, yCoord, zCoord));
-
 }
 Room.prototype.addEntity = function(entity) {
 	A_Entity.prototype.addEntity.call(this, entity);
@@ -127,9 +127,7 @@ Room.prototype.contains = function(entity) {
 };
 Room.prototype.interactWith = function(entity, x, y) {
 	if(this.contains(entity)) {
-		var childrenLenth = this.List_children.length;
-		for(var i = 0; i < childrenLenth; i++)
-			this.List_children[i].interactWith(entity, x, y);
+		A_Entity.prototype.interactWith.call(this, entity, x, y);
 	}
 };
 Room.prototype.render = function(view) {
