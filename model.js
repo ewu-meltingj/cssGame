@@ -54,7 +54,9 @@ Person.prototype.addEntity = function(entity) {
 	A_Entity.prototype.addEntity.call(this, entity);
 };
 Person.prototype.move = function(x, y) {
-
+	this.xCoord += x;
+	this.yCoord += y;
+	this.hasChanged = true;
 };
 Person.prototype.render = function(view) {
 	view.renderPerson(this);
