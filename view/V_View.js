@@ -1,6 +1,9 @@
-function View () {
+if(oso === undefined) {var oso = {};}
+
+oso.View = function (ctx) {
 	this.offsetX = 0;
 	this.offsetY = 0;
+	this.ctx = ctx;
 
 	this.render = function(entity) {
 		entity.render(this);
@@ -11,7 +14,7 @@ function View () {
 	}
 
 	this.clear = function() {
-		ctxBack.clearRect(0, 0, window.innerWidth, window.innerHeight);
+		this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 	}
 
 	this.focusOn = function(entity) {

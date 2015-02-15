@@ -1,19 +1,25 @@
-function Observer(view) {
-	this.obEntitites = [];
+if(oso === undefined) {var oso = {};}
 
-	this.addEntity = function (entity) {
-		this.obEntitites.push(entity);
+oso.Observer = function (view, mainCharacter, world) {
+	var obEntitites = [],
+	view = view,
+	mainCharacter = mainCharacter,
+	world = world;
+	addEntity(world);
+
+	function addEntity (entity) {
+		obEntitites.push(entity);
 		var childrenLenth = entity.List_children.length;
 		for(var i = 0; i < childrenLenth; i++)
-			this.addEntity(entity.List_children[i]);
-	};
+			addEntity(entity.List_children[i]);
+	};//private 
 
 	this.update = function () {
-		var length = this.obEntitites.length;
+		var length = obEntitites.length;
 		var render = false;
 		for(var i = 0; i < length; i++) {
-			if (this.obEntitites[i].hasChanged === true) {
-				this.obEntitites[i].update(this);
+			if (obEntitites[i].hasChanged === true) {
+				obEntitites[i].update(this);
 				render = true;
 			}
 		}

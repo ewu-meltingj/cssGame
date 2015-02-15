@@ -1,4 +1,6 @@
-function Control (person, world) {
+if(oso === undefined) {var oso = {};}
+
+oso.Controller = function (person, world) {
 	window.onkeydown = function(e) {
 	 	var key = e.keyCode ? e.keyCode : e.which;
 

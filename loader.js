@@ -16,21 +16,21 @@ function loadScript(urlArray, nextCallback) {
 }
 
 var urls = [
-    "model/model.js",
-    "model/world.js",
-    "model/wall.js",
-    "model/room.js",
-    "model/person.js",
-    "model/door.js",
-    "view/view.js",
-    "view/world.js",
-    "view/structure.js",
-    "view/room.js",
-    "view/person.js",
-    "view/door.js",
-    "view/observer.js",
-    "controller/controller.js",
-    "application.js"];
+    "model/M_Model.js",
+    "model/M_World.js",
+    "model/M_Wall.js",
+    "model/M_Room.js",
+    "model/M_Person.js",
+    "model/M_Door.js",
+    "view/V_View.js",
+    "view/V_World.js",
+    "view/V_Structure.js",
+    "view/V_Room.js",
+    "view/V_Person.js",
+    "view/V_Door.js",
+    "view/V_Observer.js",
+    "controller/C_Controller.js",
+    "app.js"];
 
 loadScript(urls, function(){
     console.log("Finished Loading Scripts");

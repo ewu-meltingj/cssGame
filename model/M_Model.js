@@ -1,4 +1,6 @@
-var uniqueID = (function () {
+if(oso === undefined) {var oso = {};}
+
+oso.uniqueID = (function () {
 	var counter;
 	return {
 		getID: function() {
@@ -10,8 +12,8 @@ var uniqueID = (function () {
 })();
 
 // A_Entity Model
-function A_Entity(width, height, xCoord, yCoord, zCoord, entityType) {
-	this.id = uniqueID.getID();
+oso.A_Entity = function (width, height, xCoord, yCoord, zCoord, entityType) {
+	this.id = oso.uniqueID.getID();
 	this.width = width;
 	this.height = height;
 	this.xCoord = xCoord;
@@ -22,7 +24,7 @@ function A_Entity(width, height, xCoord, yCoord, zCoord, entityType) {
 	this.children = 0;
 	this.List_children = [];
 }
-A_Entity.prototype.contains = function(entity) {
+oso.A_Entity.prototype.contains = function(entity) {
 	return !(
 		entity.xCoord + entity.width < this.xCoord || 
 		entity.xCoord > this.xCoord + this.width || 
@@ -30,11 +32,11 @@ A_Entity.prototype.contains = function(entity) {
 		entity.yCoord > this.yCoord + this.height
 		);
 };
-A_Entity.prototype.addEntity = function(entity) {
+oso.A_Entity.prototype.addEntity = function(entity) {
 	this.List_children.push(entity);
 	this.children++;
 };
-A_Entity.prototype.interactWith = function(entity, x, y) {
+oso.A_Entity.prototype.interactWith = function(entity, x, y) {
 	var childrenLenth = this.List_children.length;
 
 	for(var i = 0; i < childrenLenth; i++) {
