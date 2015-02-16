@@ -1,6 +1,6 @@
 function loadScript(urlArray, nextCallback) {
     var callback = nextCallback
-    var body = document.getElementsByTagName('body')[0];
+    var head = document.getElementsByTagName('head')[0];
     var script = document.createElement('script');
 
     script.type = 'text/javascript';
@@ -12,7 +12,7 @@ function loadScript(urlArray, nextCallback) {
     script.onreadystatechange = callback;
     script.onload = callback;
 
-    body.appendChild(script);
+    head.appendChild(script);
 }
 
 var urls = [
@@ -24,7 +24,7 @@ var urls = [
     "model/M_Door.js",
     "view/V_View.js",
     "view/V_World.js",
-    "view/V_Structure.js",
+    "view/V_Wall.js",
     "view/V_Room.js",
     "view/V_Person.js",
     "view/V_Door.js",

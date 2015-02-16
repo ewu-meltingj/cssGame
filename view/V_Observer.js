@@ -1,9 +1,9 @@
 if(oso === undefined) {var oso = {};}
 
-oso.Observer = function (view, mainCharacter, world) {
+oso.Observer = function (view, _mainCharacter, world) {
 	var obEntitites = [],
 	view = view,
-	mainCharacter = mainCharacter,
+	mainCharacter = _mainCharacter,
 	world = world;
 	addEntity(world);
 
@@ -16,6 +16,7 @@ oso.Observer = function (view, mainCharacter, world) {
 
 	this.update = function () {
 		var length = obEntitites.length;
+
 		var render = false;
 		for(var i = 0; i < length; i++) {
 			if (obEntitites[i].hasChanged === true) {
@@ -24,7 +25,6 @@ oso.Observer = function (view, mainCharacter, world) {
 			}
 		}
 		if (render) {
-			view.clear();
 			view.focusOn(mainCharacter);
 			view.render(world);
 		}

@@ -1,35 +1,23 @@
 if(oso === undefined) {var oso = {};}
 
 (function (){
-	var canvas = document.getElementById('background'),
-	ctx = canvas.getContext('2d');
-	window.addEventListener('resize', resizeCanvas, false);
+	var worldLevel = 5;
+	var worldWidth = 500;
+	var worldDepth = 100;
 
-	function resizeCanvas() {
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-		render(); 
-	}
+	var world = new oso.World("Paradise", worldWidth, worldLevel, worldDepth); // name, width, height, depth
+	var mainCharacter = new oso.Person("Jeremy", 10, 30, 10, 20, worldLevel, 50); //name, width, height, depth, xCoord, yCoord, zCoord
 
-	function render() {
-		view.render(world);
-	}
-
-	var world = new oso.World("Paradise", 500, 500);
-	var mainCharacter = new oso.Person("Jeremy", 20, 20, 30, 30, 1);
-
-	world.addEntity(new oso.Room(100, 200, 10, 10, 1));
-	world.addEntity(new oso.Room(200, 200, 120, 10, 1));
-	world.addEntity(new oso.Room(100, 200, 380, 10, 1));
+	world.addEntity(new oso.Room(100, 80, worldDepth - 20, 100, worldLevel, 10));
 	world.addEntity(mainCharacter);
 
 
-	var view = new oso.View(ctx);
+	var view = new oso.View();
 	var observer = new oso.Observer(view, mainCharacter, world);
+	var controller = new oso.Controller(view, mainCharacter, world);
 
-	var controller = new oso.Controller(mainCharacter, world);
-
-	resizeCanvas();
+	view.render(world);
+	
 	setInterval(onTimerTick, 33);
 
 	function onTimerTick() {
