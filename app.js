@@ -8,7 +8,7 @@ if(oso === undefined) {var oso = {};}
 	var world = new oso.World("Paradise", worldWidth, worldLevel, worldDepth); // name, width, height, depth
 	var mainCharacter = new oso.Person("Jeremy", 10, 30, 10, 20, worldLevel, 50); //name, width, height, depth, xCoord, yCoord, zCoord
 
-	world.addEntity(new oso.Room(100, 80, worldDepth - 20, 100, worldLevel, 10));
+	world.addEntity(new oso.Room(100, 80, 40, 100, worldLevel, 10));
 	world.addEntity(mainCharacter);
 
 
