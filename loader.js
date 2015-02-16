@@ -11,6 +11,7 @@ function loadScript(urlArray, nextCallback) {
 
     script.onreadystatechange = callback;
     script.onload = callback;
+    console.log("loaded: " + script.src);
 
     head.appendChild(script);
 }

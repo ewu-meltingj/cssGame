@@ -12,7 +12,6 @@ oso.Wall.prototype.contains = function(entity) {
 };
 oso.Wall.prototype.interactWith = function(entity, x, y, z) {
 	if(this.contains(entity)) {
-		console.log("boomer wall");
 		entity.xCoord += x*-1;
 		entity.zCoord += z*-1;
 		oso.A_Entity.prototype.interactWith.call(this, entity, x, y, z);

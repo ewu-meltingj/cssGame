@@ -19,7 +19,6 @@ oso.Room.prototype.contains = function(entity) {
 };
 oso.Room.prototype.interactWith = function(entity, x, y, z) {
 	if(this.contains(entity)) {
-		console.log("inside room");
 		oso.A_Entity.prototype.interactWith.call(this, entity, x, y, z);
 	}
 };

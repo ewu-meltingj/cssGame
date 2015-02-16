@@ -48,8 +48,8 @@ oso.A_Entity.prototype.interactWith = function(entity, x, y, z) {
 
 	for(var i = 0; i < childrenLenth; i++) {
 		this.List_children[i].interactWith(entity, x, y, z);
-		console.log("Inside: " + this.entityType + ":" + this.id + 
-			" which inludes: " + this.List_children[i].entityType + ":" + this.List_children[i].id);
+		// console.log("Inside: " + this.entityType + ":" + this.id + 
+			// " which inludes: " + this.List_children[i].entityType + ":" + this.List_children[i].id);
 	}
-	console.log("\n");
+	// console.log("\n");
 };
