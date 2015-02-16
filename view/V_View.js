@@ -73,7 +73,7 @@ oso.View = function () {
 
 	function init() {
 		scene = new THREE.Scene();
-		renderer = new THREE.CanvasRenderer();
+		renderer = new THREE.WebGLRenderer();
 
 		renderer.setClearColor( 0xf0f0f0 );
 		renderer.setPixelRatio( window.devicePixelRatio );
