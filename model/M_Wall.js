@@ -3,6 +3,7 @@ if(oso === undefined) {var oso = {};}
 // Wall Model
 oso.Wall = function (width, height, depth, xCoord, yCoord, zCoord) {
 	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, "Wall");
+	this.isSolid = true;
 }
 oso.Wall.prototype.addEntity = function(entity) {
 	oso.A_Entity.prototype.addEntity.call(this, entity);
@@ -13,6 +14,7 @@ oso.Wall.prototype.contains = function(entity) {
 oso.Wall.prototype.interactWith = function(entity, x, y, z) {
 	if(this.contains(entity)) {
 		entity.xCoord += x*-1;
+		entity.yCoord += y*-1;
 		entity.zCoord += z*-1;
 		oso.A_Entity.prototype.interactWith.call(this, entity, x, y, z);
 	}

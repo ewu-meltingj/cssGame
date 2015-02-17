@@ -1,11 +1,46 @@
 if(oso === undefined) {var oso = {};}
 
-oso.Observer = function (view, _mainCharacter, world) {
+oso.Observer = function (_view, _mainCharacter, _world) {
 	var obEntitites = [],
-	view = view,
+	view = _view,
 	mainCharacter = _mainCharacter,
-	world = world;
+	world = _world;
 	addEntity(world);
+
+	this.finishUpdate = function (entity) {
+		entity.hasChanged = false;
+		var childrenLenth = entity.List_children.length;
+		for(var i = 0; i < childrenLenth; i++)
+			entity.List_children[i].update(this);
+		view.render(entity);
+
+		if(!entity.isOnGround)
+			entity.moveIn(world, 0, -(entity.increaseVelocity()), 0);
+	}
+
+	this.update = function () {
+		var length = obEntitites.length;
+		for(var i = 0; i < length; i++) {
+			if (obEntitites[i].hasChanged === true)
+				obEntitites[i].update(this);
+		}
+	};
+
+	this.updateWorld = function(world) {
+		this.finishUpdate(world);
+	};
+
+	this.updatePerson = function(person) {
+		this.finishUpdate(person);
+	};
+
+	this.updateStructure = function(structure) {
+		this.finishUpdate(structure);
+	};
+
+	this.updateDoor = function(door) {
+		this.finishUpdate(door);
+	};
 
 	function addEntity (entity) {
 		obEntitites.push(entity);
@@ -13,48 +48,4 @@ oso.Observer = function (view, _mainCharacter, world) {
 		for(var i = 0; i < childrenLenth; i++)
 			addEntity(entity.List_children[i]);
 	};//private 
-
-	this.update = function () {
-		var length = obEntitites.length;
-
-		var render = false;
-		for(var i = 0; i < length; i++) {
-			if (obEntitites[i].hasChanged === true) {
-				obEntitites[i].update(this);
-				render = true;
-			}
-		}
-		if (render) {
-			view.focusOn(mainCharacter);
-			view.render(world);
-		}
-	};
-
-	this.updateWorld = function(world) {
-		world.hasChanged = false;
-		var childrenLenth = world.List_children.length;
-		for(var i = 0; i < childrenLenth; i++)
-			world.List_children[i].update(this);
-	};
-
-	this.updatePerson = function(person) {
-		person.hasChanged = false;
-		var childrenLenth = person.List_children.length;
-		for(var i = 0; i < childrenLenth; i++)
-			person.List_children[i].update(this);
-	};
-
-	this.updateStructure = function(structure) {
-		structure.hasChanged = false;
-		var childrenLenth = structure.List_children.length;
-		for(var i = 0; i < childrenLenth; i++)
-			structure.List_children[i].update(this);
-	};
-
-	this.updateDoor = function(door) {
-		door.hasChanged = false;
-		var childrenLenth = door.List_children.length;
-		for(var i = 0; i < childrenLenth; i++)
-			door.List_children[i].update(this);
-	};
 }

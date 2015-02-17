@@ -33,10 +33,6 @@ oso.View = function () {
 		};
 	};
 
-	this.focusOn = function(entity) {
-		entity.rendering.add(camera);
-	};
-
 	this.rotateCamera = function(isLeft) {
 		if(isLeft) {
 			camera.rotation.y += -0.008;

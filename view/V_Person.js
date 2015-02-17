@@ -16,6 +16,7 @@ oso.View.prototype.renderPerson = function(person, scene, camera) {
 			overdraw: 0.5
 		});
 		person.rendering = new THREE.Mesh( geometry, material );
+		person.rendering.add(camera);
 		
 		person.parent.rendering.add(person.rendering);
 	};
