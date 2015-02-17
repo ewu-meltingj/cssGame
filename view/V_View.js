@@ -69,9 +69,9 @@ oso.View = function () {
 			far = 1000;
 
 		camera = new THREE.OrthographicCamera(left, right, top, bottom, near, far);
-		camera.position.x = 200;
-		camera.position.y = 100;
-		camera.position.z = 200;
+		camera.position.x = 10;
+		camera.position.y = 20;
+		camera.position.z = 50;
 		camera.updateProjectionMatrix();
 	};
 
