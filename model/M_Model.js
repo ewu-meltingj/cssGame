@@ -14,42 +14,64 @@ oso.uniqueID = (function () {
 // A_Entity Model
 oso.A_Entity = function (width, height, depth, xCoord, yCoord, zCoord, entityType) {
 	this.id = oso.uniqueID.getID();
-	this.width = width;
-	this.height = height;
-	this.depth = depth;
-	this.xCoord = xCoord;
-	this.yCoord = yCoord;
-	this.zCoord = zCoord;
+	// this.width = width;
+	// this.height = height;
+	// this.depth = depth;
+	this.dimension = new oso.Dimension(width, height, depth);
+	this.position = new oso.Point(xCoord, yCoord, zCoord)
+	this.target = new oso.Point(xCoord, yCoord, zCoord);
 	this.hasChanged = true;
 	this.entityType = entityType;
-	this.children = 0;
 	this.parent = null;
 	this.rendering = null;
 	this.List_children = [];
 }
+
+oso.A_Entity.prototype.getAbsX = function() {
+	while(this.parent)
+		return oso.A_Entity.prototype.getAbsX.call(this.parent) + this.position.x;
+	return this.position.x;
+}
+
+oso.A_Entity.prototype.getAbsY = function() {
+	while(this.parent)
+		return oso.A_Entity.prototype.getAbsY.call(this.parent) + this.position.y;
+	return this.position.y;
+}
+
+oso.A_Entity.prototype.getAbsZ = function() {
+	while(this.parent)
+		return oso.A_Entity.prototype.getAbsZ.call(this.parent) + this.position.z;
+	return this.position.z;
+}
+
 oso.A_Entity.prototype.contains = function(entity) {
-	return !(
-		entity.xCoord + entity.width < this.xCoord || 
-		entity.xCoord > this.xCoord + this.width || 
-		entity.zCoord + entity.depth < this.zCoord || 
-		entity.zCoord > this.zCoord + this.depth
-		);
+	var contains = !(
+		entity.getAbsX() + entity.dimension.width/2  < this.getAbsX() - this.dimension.width/2 || 
+		entity.getAbsX() - entity.dimension.width/2  > this.getAbsX() + this.dimension.width/2 ||
+		entity.getAbsY() + entity.dimension.height/2 < this.getAbsY() - this.dimension.height/2 || 
+		entity.getAbsY() - entity.dimension.height/2 > this.getAbsY() + this.dimension.height/2 || 
+		entity.getAbsZ() + entity.dimension.depth/2  < this.getAbsZ() - this.dimension.depth/2 || 
+		entity.getAbsZ() - entity.dimension.depth/2  > this.getAbsZ() + this.dimension.depth/2
+	);
+	return contains;
 };
 oso.A_Entity.prototype.addEntity = function(entity) {
 	entity.parent = this;
 	this.List_children.push(entity);
-	entity.xCoord += entity.parent.xCoord;
-	entity.yCoord += entity.parent.yCoord;
-	entity.zCoord += entity.parent.zCoord;
-	this.children++;
+};
+oso.A_Entity.prototype.moveIn = function(entity, x, y, z) {
+	this.position.x += x;
+	this.position.y += y;
+	this.position.z += z;
+	
+	this.isOnGround = true;
+	entity.interactWith(this, x, y, z);
+	this.hasChanged = true;
 };
 oso.A_Entity.prototype.interactWith = function(entity, x, y, z) {
 	var childrenLenth = this.List_children.length;
-
 	for(var i = 0; i < childrenLenth; i++) {
 		this.List_children[i].interactWith(entity, x, y, z);
-		// console.log("Inside: " + this.entityType + ":" + this.id + 
-			// " which inludes: " + this.List_children[i].entityType + ":" + this.List_children[i].id);
 	}
-	// console.log("\n");
 };

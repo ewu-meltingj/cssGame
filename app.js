@@ -1,26 +1,26 @@
 if(oso === undefined) {var oso = {};}
 
 (function (){
-	var worldLevel = 5;
+	var worldHeight = 5;
 	var worldWidth = 500;
-	var worldDepth = 100;
+	var worldDepth = 300;
 
-	var world = new oso.World("Paradise", worldWidth, worldLevel, worldDepth); // name, width, height, depth
-	var mainCharacter = new oso.Person("Jeremy", 10, 30, 10, 20, worldLevel, 50); //name, width, height, depth, xCoord, yCoord, zCoord
-
-	world.addEntity(new oso.Room(100, 80, 40, 100, worldLevel, 10));
+	var world = new oso.World("Paradise", worldWidth, worldHeight, worldDepth); // name, width, height, depth
+	var mainCharacter = new oso.Person("Jeremy", 10, 30, 10, 0, groundOffset(0, 30), 0); //name, width, height, depth, xCoord, yCoord, zCoord
+	world.addEntity(new oso.Room(400, 90, 200, 0, groundOffset(0, 90), 0));
 	world.addEntity(mainCharacter);
 
 
 	var view = new oso.View();
-	var observer = new oso.Observer(view, mainCharacter, world);
+	var observer = new oso.Observer(view, world);
 	var controller = new oso.Controller(view, mainCharacter, world);
-
 	view.render(world);
-	
-	setInterval(onTimerTick, 33);
 
-	function onTimerTick() {
-	    observer.update();
+
+	var gameLoop = new oso.GameLoop(observer, view);
+	gameLoop.start();
+
+	function groundOffset(y, eHeight) {
+		return worldHeight/2 + eHeight/2 + y;
 	}
 })();
