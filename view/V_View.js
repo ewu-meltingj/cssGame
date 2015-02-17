@@ -7,7 +7,7 @@ oso.View = function () {
 		width = window.innerWidth,
 		height = window.innerHeight;
 
-	cameraOrthographic();
+	cameraPerspective();
 	init();
 	addLighting();
 
@@ -74,15 +74,15 @@ oso.View = function () {
 	};
 
 	function cameraPerspective() {
-		var fov = 45,
+		var fov = 75,
 			aspectRatio = width/height,
 			near = 1,
 			far = 1000;
 
 		camera = new THREE.PerspectiveCamera( fov, aspectRatio, near, far);
-		camera.position.x = 0;
+		camera.position.x = 20;
 		camera.position.y = 200;
-		camera.position.z = 300;
+		camera.position.z = 340;
 		camera.rotation.x = -0.6;
 		camera.updateProjectionMatrix();
 	};

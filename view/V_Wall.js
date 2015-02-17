@@ -13,7 +13,6 @@ oso.View.prototype.renderWall = function(wall, scene, camera) {
 		var material = new THREE.MeshLambertMaterial( { 
 			color: 0xf3f324, 
 			shading: THREE.FlatShading,
-			map: THREE.ImageUtils.loadTexture('https://woundmagazine.files.wordpress.com/2012/09/6.jpg'),
 			overdraw: 0.5
 		});
 		wall.rendering = new THREE.Mesh( geometry, material );
