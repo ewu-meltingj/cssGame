@@ -14,7 +14,7 @@ oso.View.prototype.renderRoom = function(room, scene, camera) {
 			color: 0xff00dd, 
 			shading: THREE.FlatShading,
 			transparent: true,
-			opacity: 0.2,
+			opacity: 0,
 			overdraw: 0.5
 		});
 		room.rendering = new THREE.Mesh( geometry, material );
