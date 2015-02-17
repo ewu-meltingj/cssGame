@@ -13,7 +13,6 @@ oso.View.prototype.renderWorld = function(world, scene, camera) {
 		var material = new THREE.MeshLambertMaterial( { 
 			color: 0xffffff, 
 			shading: THREE.FlatShading, 
-			map: THREE.ImageUtils.loadTexture('http://a1.dspnimg.com/data/l/900934129654_Lq8LXnxy_l.jpg'),
 			overdraw: 2.5
 		});
 		world.rendering = new THREE.Mesh( geometry, material );
