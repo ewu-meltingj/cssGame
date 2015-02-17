@@ -13,9 +13,11 @@ oso.Wall.prototype.contains = function(entity) {
 };
 oso.Wall.prototype.interactWith = function(entity, x, y, z) {
 	if(this.contains(entity)) {
-		entity.xCoord += x*-1;
-		entity.yCoord += y*-1;
-		entity.zCoord += z*-1;
+		entity.target = new oso.Point(
+			entity.position.x + (x * -1000), 
+			entity.position.y + (y * -1000), 
+			entity.position.z + (z * -1000)
+		);
 		oso.A_Entity.prototype.interactWith.call(this, entity, x, y, z);
 	}
 };
@@ -24,4 +26,13 @@ oso.Wall.prototype.render = function(view, scene, camera) {
 };
 oso.Wall.prototype.update = function(observer) {
 	observer.updateStructure(this);
+};
+oso.Wall.prototype.getAbsX = function(entity) {
+	return oso.A_Entity.prototype.getAbsX.call(this, entity);
+};
+oso.Wall.prototype.getAbsY = function(entity) {
+	return oso.A_Entity.prototype.getAbsY.call(this, entity);
+};
+oso.Wall.prototype.getAbsZ = function(entity) {
+	return oso.A_Entity.prototype.getAbsZ.call(this, entity);
 };

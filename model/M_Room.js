@@ -6,9 +6,13 @@ oso.Room = function (width, height, depth, xCoord, yCoord, zCoord) {
 
 	var wallWidth = 10;
 
-	this.addEntity(new oso.Wall(wallWidth, height, depth, 0, 0, 0));
-	this.addEntity(new oso.Wall(wallWidth, height, depth, width - wallWidth, 0, 0));
-	this.addEntity(new oso.Wall(width, height, wallWidth, 0, 0, 0));
+	var leftPos = width/2 - width + wallWidth/2;
+	var rightPos = width/2 - wallWidth/2;
+	var backPos = depth/2 - depth - wallWidth/2;
+
+	this.addEntity(new oso.Wall(wallWidth, height, depth, leftPos, 0, 0));
+	this.addEntity(new oso.Wall(wallWidth, height, depth, rightPos, 0, 0));
+	this.addEntity(new oso.Wall(width, height, wallWidth, 0, 0, backPos));
 
 }
 oso.Room.prototype.addEntity = function(entity) {
@@ -28,4 +32,13 @@ oso.Room.prototype.render = function(view, scene, camera) {
 };
 oso.Room.prototype.update = function(observer) {
 	observer.updateStructure(this);
+};
+oso.Room.prototype.getAbsX = function(entity) {
+	return oso.A_Entity.prototype.getAbsX.call(this, entity);
+};
+oso.Room.prototype.getAbsY = function(entity) {
+	return oso.A_Entity.prototype.getAbsY.call(this, entity);
+};
+oso.Room.prototype.getAbsZ = function(entity) {
+	return oso.A_Entity.prototype.getAbsZ.call(this, entity);
 };

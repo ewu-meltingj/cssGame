@@ -12,9 +12,9 @@ oso.View.prototype.renderWorld = function(world, scene, camera) {
 			overdraw: 2.5
 		});
 		world.rendering = new THREE.Mesh( geometry, material );
-		world.rendering.position.x = world.xCoord;
-		world.rendering.position.y = world.yCoord;
-		world.rendering.position.z = world.zCoord;
+		world.rendering.position.x = world.position.x;
+		world.rendering.position.y = world.position.y;
+		world.rendering.position.z = world.position.z;
 
 		scene.add(world.rendering);
 

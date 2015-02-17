@@ -21,3 +21,12 @@ oso.World.prototype.render = function(view, scene, camera) {
 oso.World.prototype.update = function(observer) {
 	observer.updateWorld(this);
 };
+oso.World.prototype.getAbsX = function(entity) {
+	return oso.A_Entity.prototype.getAbsX.call(this, entity);
+};
+oso.World.prototype.getAbsY = function(entity) {
+	return oso.A_Entity.prototype.getAbsY.call(this, entity);
+};
+oso.World.prototype.getAbsZ = function(entity) {
+	return oso.A_Entity.prototype.getAbsZ.call(this, entity);
+};

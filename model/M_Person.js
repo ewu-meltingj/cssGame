@@ -16,13 +16,18 @@ oso.Person.prototype.interactWith = function(entity, x, y, z) {
 oso.Person.prototype.render = function(view, scene, camera) {
 	view.renderPerson(this, scene, camera);
 };
-oso.Person.prototype.update = function(observer) {
-	observer.updatePerson(this);
+oso.Person.prototype.update = function(observer, delta) {
+	observer.updatePerson(this, delta);
 };
 oso.Person.prototype.moveIn = function(entity, x, y, z) {
 	oso.A_Entity.prototype.moveIn.call(this, entity, x, y, z);
 };
-
-oso.Person.prototype.increaseVelocity = function() {
-	return oso.A_Entity.prototype.increaseVelocity.call(this);
+oso.Person.prototype.getAbsX = function(entity) {
+	return oso.A_Entity.prototype.getAbsX.call(this, entity);
+};
+oso.Person.prototype.getAbsY = function(entity) {
+	return oso.A_Entity.prototype.getAbsY.call(this, entity);
+};
+oso.Person.prototype.getAbsZ = function(entity) {
+	return oso.A_Entity.prototype.getAbsZ.call(this, entity);
 };
