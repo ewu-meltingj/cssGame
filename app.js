@@ -3,11 +3,11 @@ if(oso === undefined) {var oso = {};}
 (function (){
 	var worldHeight = 5;
 	var worldWidth = 500;
-	var worldDepth = 100;
+	var worldDepth = 300;
 
 	var world = new oso.World("Paradise", worldWidth, worldHeight, worldDepth); // name, width, height, depth
 	var mainCharacter = new oso.Person("Jeremy", 10, 30, 10, 0, groundOffset(0, 30), 0); //name, width, height, depth, xCoord, yCoord, zCoord
-	world.addEntity(new oso.Room(400, 90, 40, 0, groundOffset(0, 90), 0));
+	world.addEntity(new oso.Room(400, 90, 200, 0, groundOffset(0, 90), 0));
 	world.addEntity(mainCharacter);
 
 

@@ -4,7 +4,6 @@ if(oso === undefined) {var oso = {};}
 oso.World = function (name, width, height, depth) {
 	this.name = name;
 	oso.A_Entity.call(this, width, height, depth, 0, 0, 0, "world"); // 000 => xyz coords
-	this.isSolid = true;
 }
 oso.World.prototype.addEntity = function(entity) {
 	oso.A_Entity.prototype.addEntity.call(this, entity);

@@ -4,7 +4,7 @@ oso.Controller = function (view, person, world) {
 	window.onkeydown = function(e) {
 	 	var key = e.keyCode ? e.keyCode : e.which;
 
-	 	if (key == 37) {//left
+	 	if (key == 65) {//left
 			person.target = new oso.Point(
 				-20 + person.position.x,
 				person.position.y, 
@@ -13,7 +13,7 @@ oso.Controller = function (view, person, world) {
 			person.hasChanged = true;
 			
 	 	}
-		else if (key == 38) {//up 
+		else if (key == 87) {//up 
 			person.target = new oso.Point(
 				person.position.x,
 				person.position.y, 
@@ -22,7 +22,7 @@ oso.Controller = function (view, person, world) {
 			person.hasChanged = true;
 
 		}
-		else if (key == 39) {//right
+		else if (key == 68) {//right
 			person.target = new oso.Point(
 				+20 + person.position.x,
 				person.position.y, 
@@ -31,7 +31,7 @@ oso.Controller = function (view, person, world) {
 			person.hasChanged = true;
 
 		}
-		else if (key == 40) {//down
+		else if (key == 83) {//down
 			person.target = new oso.Point(
 				person.position.x,
 				person.position.y, 
@@ -40,11 +40,17 @@ oso.Controller = function (view, person, world) {
 			person.hasChanged = true;
 
 		}
-		else if (key == 90) {// z
-			view.rotateCamera(true);
+		else if (key == 37) {// z
+			view.rotateCameraY(true);
 		}
-		else if (key == 88) {// x
-			view.rotateCamera();
+		else if (key == 39) {// x
+			view.rotateCameraY();
+		}
+		else if (key == 38) {// z
+			view.rotateCameraX(true);
+		}
+		else if (key == 40) {// x
+			view.rotateCameraX();
 		}
 		else if (key == 32) {// space
 			person.target = new oso.Point(

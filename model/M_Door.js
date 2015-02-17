@@ -11,10 +11,8 @@ oso.Door.prototype.contains = function(entity) {
 	return oso.A_Entity.prototype.contains.call(this, entity);
 };
 oso.Door.prototype.interactWith = function(entity, x, y, z) {
-	if(this.contains(entity)) {
-		oso.A_Entity.prototype.doeslift.call(this, entity, y);
+	if(this.contains(entity))
 		oso.A_Entity.prototype.interactWith.call(this, entity, x, y, z);
-	}
 };
 oso.Door.prototype.render = function(view, scene, camera) {
 	view.renderDoor(this, scene, camera);

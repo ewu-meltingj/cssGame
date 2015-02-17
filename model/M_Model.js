@@ -14,16 +14,14 @@ oso.uniqueID = (function () {
 // A_Entity Model
 oso.A_Entity = function (width, height, depth, xCoord, yCoord, zCoord, entityType) {
 	this.id = oso.uniqueID.getID();
-	this.width = width;
-	this.height = height;
-	this.depth = depth;
+	// this.width = width;
+	// this.height = height;
+	// this.depth = depth;
+	this.dimension = new oso.Dimension(width, height, depth);
 	this.position = new oso.Point(xCoord, yCoord, zCoord)
 	this.target = new oso.Point(xCoord, yCoord, zCoord);
-	this.isSolid = false;
 	this.hasChanged = true;
-	this.velocity = 0;
 	this.entityType = entityType;
-	this.isOnGround = true;
 	this.parent = null;
 	this.rendering = null;
 	this.List_children = [];
@@ -48,14 +46,15 @@ oso.A_Entity.prototype.getAbsZ = function() {
 }
 
 oso.A_Entity.prototype.contains = function(entity) {
-	return !(
-		entity.getAbsX() + entity.width/2  < this.getAbsX() - this.width/2 || 
-		entity.getAbsX() - entity.width/2  > this.getAbsX() + this.width/2 ||
-		entity.getAbsY() + entity.height/2 < this.getAbsY() - this.height/2 || 
-		entity.getAbsY() - entity.height/2 > this.getAbsY() + this.height/2 || 
-		entity.getAbsZ() + entity.depth/2  < this.getAbsZ() - this.depth/2 || 
-		entity.getAbsZ() - entity.depth/2  > this.getAbsZ() + this.depth/2
+	var contains = !(
+		entity.getAbsX() + entity.dimension.width/2  < this.getAbsX() - this.dimension.width/2 || 
+		entity.getAbsX() - entity.dimension.width/2  > this.getAbsX() + this.dimension.width/2 ||
+		entity.getAbsY() + entity.dimension.height/2 < this.getAbsY() - this.dimension.height/2 || 
+		entity.getAbsY() - entity.dimension.height/2 > this.getAbsY() + this.dimension.height/2 || 
+		entity.getAbsZ() + entity.dimension.depth/2  < this.getAbsZ() - this.dimension.depth/2 || 
+		entity.getAbsZ() - entity.dimension.depth/2  > this.getAbsZ() + this.dimension.depth/2
 	);
+	return contains;
 };
 oso.A_Entity.prototype.addEntity = function(entity) {
 	entity.parent = this;

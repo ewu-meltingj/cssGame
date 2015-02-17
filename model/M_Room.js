@@ -22,10 +22,8 @@ oso.Room.prototype.contains = function(entity) {
 	return oso.A_Entity.prototype.contains.call(this, entity);
 };
 oso.Room.prototype.interactWith = function(entity, x, y, z) {
-	if(this.contains(entity)) {
-		// oso.A_Entity.prototype.doeslift.call(this, entity, y);
+	if(this.contains(entity))
 		oso.A_Entity.prototype.interactWith.call(this, entity, x, y, z);
-	}
 };
 oso.Room.prototype.render = function(view, scene, camera) {
 	view.renderRoom(this, scene, camera);

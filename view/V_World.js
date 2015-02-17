@@ -5,7 +5,11 @@ oso.View.prototype.renderWorld = function(world, scene, camera) {
 		render();
 
 	function render() {
-		var geometry = new THREE.BoxGeometry(world.width, world.height, world.depth);
+		var geometry = new THREE.BoxGeometry(
+			world.dimension.width, 
+			world.dimension.height, 
+			world.dimension.depth
+		);
 		var material = new THREE.MeshLambertMaterial( { 
 			color: 0xffffff, 
 			shading: THREE.FlatShading, 

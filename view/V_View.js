@@ -7,7 +7,7 @@ oso.View = function () {
 		width = window.innerWidth,
 		height = window.innerHeight;
 
-	cameraPerspective();
+	cameraOrthographic();
 	init();
 	addLighting();
 
@@ -18,19 +18,21 @@ oso.View = function () {
 			this.render(entity.List_children[i]);
 	}
 
-	this.rotateCamera = function(isLeft) {
+	this.rotateCameraY = function(isLeft) {
 		if(isLeft) {
-			camera.rotation.y += -0.008;
-			camera.rotation.x += 0.0008;
-			camera.position.x += -4;
-			camera.position.z += -3;
-
+			camera.rotation.y += degInRad(3);
 		}
 		else {
-			camera.rotation.y += 0.008;
-			camera.rotation.x += -0.0008;
-			camera.position.x += 4;
-			camera.position.z += 3;
+			camera.rotation.y -= degInRad(3);
+		}
+	}
+
+	this.rotateCameraX = function(isUp) {
+		if(isUp) {
+			camera.rotation.x += degInRad(3);
+		}
+		else {
+			camera.rotation.x -= degInRad(3);
 		}
 	}
 
@@ -56,19 +58,38 @@ oso.View = function () {
 		window.addEventListener('resize', onWindowResize, false );
 	};
 
+	function cameraOrthographic() {
+		var left = width / -2, 
+			right = width / 2, 
+			top = height / 2, 
+			bottom = height / -2, 
+			near = -500, 
+			far = 1000;
+
+		camera = new THREE.OrthographicCamera(left, right, top, bottom, near, far);
+		camera.position.x = 200;
+		camera.position.y = 100;
+		camera.position.z = 200;
+		camera.updateProjectionMatrix();
+	};
+
 	function cameraPerspective() {
 		var fov = 45,
 			aspectRatio = width/height,
 			near = 1,
-			far = 10000;
+			far = 1000;
 
 		camera = new THREE.PerspectiveCamera( fov, aspectRatio, near, far);
 		camera.position.x = 0;
 		camera.position.y = 200;
-		camera.position.z = 450;
-		camera.rotation.x = -0.2;
+		camera.position.z = 300;
+		camera.rotation.x = -0.6;
 		camera.updateProjectionMatrix();
 	};
+
+	function degInRad(deg) {
+		return deg * Math.PI / 180;
+	}
 
 	function onWindowResize() {
 		camera.left = window.innerWidth / - 2;
