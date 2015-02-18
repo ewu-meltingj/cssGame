@@ -1,8 +1,7 @@
-# CSS Trivia MVC
+# MVC Game Framework
 
-Game to learn new skills
+Building a game framework to learn 3d graphics and more programming patterns.
 
-Arrow keys control player.
+Standard 'a, s, d, w' movement keys.
 
-'z' moves camera left
-'x' moves camera right
+Using three.js to handle 3D rendering.
