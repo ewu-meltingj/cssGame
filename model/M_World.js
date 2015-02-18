@@ -4,6 +4,17 @@ if(oso === undefined) {var oso = {};}
 oso.World = function (name, width, height, depth) {
 	this.name = name;
 	oso.A_Entity.call(this, width, height, depth, 0, 0, 0, "world"); // 000 => xyz coords
+
+	var wallWidth = 10;
+	var wallHeight = 832;
+
+	var backPos = depth/2 - depth - wallWidth/2;
+	var floorPos = -height/2 + wallHeight/2;
+
+	var texture = "assets/images/backdrop.jpg";
+
+	this.addEntity(new oso.Wall(width, wallHeight, wallWidth, 0, floorPos, backPos, texture)); //backwall
+
 }
 oso.World.prototype.addEntity = function(entity) {
 	oso.A_Entity.prototype.addEntity.call(this, entity);

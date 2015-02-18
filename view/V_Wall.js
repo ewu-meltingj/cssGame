@@ -15,6 +15,9 @@ oso.View.prototype.renderWall = function(wall, scene, camera) {
 			shading: THREE.FlatShading,
 			overdraw: 0.5
 		});
+		if(wall.texture) {
+			material.map = THREE.ImageUtils.loadTexture(wall.texture);
+		}
 		wall.rendering = new THREE.Mesh( geometry, material );
 		wall.rendering.position.set(wall.position.x, wall.position.y, wall.position.z);
 		wall.parent.rendering.add(wall.rendering);

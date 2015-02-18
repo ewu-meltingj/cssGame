@@ -14,6 +14,7 @@ oso.View.prototype.renderWorld = function(world, scene, camera) {
 			color: 0xffffff, 
 			shading: THREE.FlatShading, 
 			overdraw: 2.5
+			// map: THREE.ImageUtils.loadTexture('assets/images/texture.jpg')
 		});
 		world.rendering = new THREE.Mesh( geometry, material );
 		world.rendering.position.x = world.position.x;

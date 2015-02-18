@@ -9,10 +9,22 @@ oso.Room = function (width, height, depth, xCoord, yCoord, zCoord) {
 	var leftPos = width/2 - width + wallWidth/2;
 	var rightPos = width/2 - wallWidth/2;
 	var backPos = depth/2 - depth - wallWidth/2;
+	var topPos = height/2 - wallWidth/2;
+	var frontPos = depth/2 - wallWidth/2;
 
-	this.addEntity(new oso.Wall(wallWidth, height, depth, leftPos, 0, 0));
-	this.addEntity(new oso.Wall(wallWidth, height, depth, rightPos, 0, 0));
-	this.addEntity(new oso.Wall(width, height, wallWidth, 0, 0, backPos));
+	var leftPosFront = width/2 - width + width/8;
+	var rightPosFront = -width/2 + width - width/8;
+
+	var texture = "assets/images/texture.jpg";
+
+
+	this.addEntity(new oso.Wall(wallWidth, height, depth, leftPos, 0, 0, texture)); //leftwall
+	this.addEntity(new oso.Wall(wallWidth, height, depth, rightPos, 0, 0, texture));//rightwall
+	this.addEntity(new oso.Wall(width, height, wallWidth, 0, 0, backPos, texture)); //backwall
+	this.addEntity(new oso.Wall(width/4, height, wallWidth, leftPosFront, 0, frontPos. texture)); //frontLeftwall
+	this.addEntity(new oso.Wall(width/4, height, wallWidth, rightPosFront, 0, frontPos, texture)); //frontRightwall
+	this.addEntity(new oso.Wall(width, wallWidth, depth, 0, topPos, 0, texture)); //topwall
+	
 
 }
 oso.Room.prototype.addEntity = function(entity) {
