@@ -11,7 +11,6 @@ oso.View.prototype.renderWall = function(wall, scene, camera) {
 			wall.dimension.depth
 		);
 		var material = new THREE.MeshLambertMaterial( { 
-			shading: THREE.FlatShading,
 			overdraw: 0.5
 		});
 		if(wall.texture) {
