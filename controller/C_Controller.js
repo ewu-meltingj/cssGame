@@ -5,22 +5,44 @@ oso.Controller = function (view, person, world) {
 	 	var key = e.keyCode ? e.keyCode : e.which;
 
 	 	if (key == 65) {//left
-			person.rotation.translate(+5);
+	 		console.log(person);
+	 		person.target = new oso.Point(
+	 			-10 + person.position.x,
+	 			person.position.y,
+	 			person.position.z
+	 		);
+	 		// person.target = target;
+			// person.rotation.translate(+5);
 			person.hasChanged = true;
 			
 	 	}
 		else if (key == 87) {//up 
-			person.target = person.rotation.rotate(-20, person.position);
+			person.target = new oso.Point(
+	 			person.position.x,
+	 			person.position.y,
+	 			-10 + person.position.z
+	 		);
+			// person.target = person.rotation.rotate(-20, person.position);
 			person.hasChanged = true;
 
 		}
 		else if (key == 68) {//right
-			person.rotation.translate(-5);
+			person.target = new oso.Point(
+	 			+10 + person.position.x,
+	 			person.position.y,
+	 			person.position.z
+	 		);
+			// person.rotation.translate(-5);
 			person.hasChanged = true;
 
 		}
 		else if (key == 83) {//down
-			person.target = person.rotation.rotate(+20, person.position);
+			person.target = new oso.Point(
+	 			person.position.x,
+	 			person.position.y,
+	 			+10 + person.position.z
+	 		);
+			// person.target = person.rotation.rotate(+20, person.position);
 			person.hasChanged = true;
 
 		}

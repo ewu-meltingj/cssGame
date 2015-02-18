@@ -12,7 +12,7 @@ oso.uniqueID = (function () {
 })();
 
 // A_Entity Model
-oso.A_Entity = function (width, height, depth, xCoord, yCoord, zCoord, entityType) {
+oso.A_Entity = function (width, height, depth, xCoord, yCoord, zCoord, entityType, texture) {
 	this.id = oso.uniqueID.getID();
 	this.rotation = new oso.Rotation(0);
 	this.dimension = new oso.Dimension(width, height, depth);
@@ -22,6 +22,7 @@ oso.A_Entity = function (width, height, depth, xCoord, yCoord, zCoord, entityTyp
 	this.entityType = entityType;
 	this.parent = null;
 	this.rendering = null;
+	this.texture = texture;
 	this.List_children = [];
 }
 

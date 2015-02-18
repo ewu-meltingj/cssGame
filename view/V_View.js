@@ -7,7 +7,7 @@ oso.View = function () {
 		width = window.innerWidth,
 		height = window.innerHeight;
 
-	cameraPerspective();
+	cameraOrthographic();
 	init();
 	addLighting();
 
