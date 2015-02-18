@@ -18,6 +18,7 @@ oso.A_Entity = function (width, height, depth, xCoord, yCoord, zCoord, texture) 
 	this.position = new oso.Point(xCoord, yCoord, zCoord)
 	this.target = new oso.Point(xCoord, yCoord, zCoord);
 	this.hasChanged = true;
+	this.isGrounded = true;
 	this.parent = null;
 	this.rendering = null;
 	this.texture = texture;
@@ -57,13 +58,17 @@ oso.A_Entity.prototype.addEntity = function(entity) {
 	entity.parent = this;
 	this.List_children.push(entity);
 };
-oso.A_Entity.prototype.moveIn = function(entity, x, y, z) {
+oso.A_Entity.prototype.moveIn = function(x, y, z) {
 	this.position.x += x;
 	this.position.y += y;
 	this.position.z += z;
+
+	var temp = this;
+	while(temp.parent) {
+		temp = temp.parent;
+	}
 	
-	this.isOnGround = true;
-	entity.interactWith(this, x, y, z);
+	temp.interactWith(this, x, y, z);
 	this.hasChanged = true;
 };
 oso.A_Entity.prototype.interactWith = function(entity, x, y, z) {

@@ -21,7 +21,9 @@ if(oso === undefined) {var oso = {};}
 
 	var view = new oso.View();
 	var observer = new oso.Observer(view, world);
-	var controller = new oso.Controller(view, mainCharacter, world);
+	var controller = new oso.Controller(mainCharacter);
+
+	observer.addEntity(world);
 	view.render(world);
 
 

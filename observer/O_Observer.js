@@ -1,11 +1,8 @@
 if(oso === undefined) {var oso = {};}
 
-oso.Observer = function (_view, world) {
+oso.Observer = function (_view) {
 	var obEntitites = [],
 	view = _view;
-	
-	addEntity(world);
-	this.world = world;
 	this.view = view;
 
 	this.updateChildren = function (entity, delta) {
@@ -25,10 +22,10 @@ oso.Observer = function (_view, world) {
 		}
 	};
 	
-	function addEntity (entity) {
+	this.addEntity = function(entity) {
 		obEntitites.push(entity);
 		var childrenLenth = entity.List_children.length;
 		for(var i = 0; i < childrenLenth; i++)
-			addEntity(entity.List_children[i]);
+			this.addEntity(entity.List_children[i]);
 	};//private 
 }
