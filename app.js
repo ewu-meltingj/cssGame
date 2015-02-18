@@ -6,8 +6,9 @@ if(oso === undefined) {var oso = {};}
 	var worldDepth = 200;
 	var texture = "assets/images/ground.jpg";
 
+
 	var world = new oso.World("Paradise", worldWidth, worldHeight, worldDepth, texture); // name, width, height, depth
-	var mainCharacter = new oso.Person("Jeremy", 50, 90, 50, 0, groundOffset(0, 90), 0); //name, width, height, depth, xCoord, yCoord, zCoord
+	var mainCharacter = new oso.Person("Jeremy", 72, 100, 72, 0, groundOffset(0, 90), 0); //name, width, height, depth, xCoord, yCoord, zCoord
 	world.addEntity(new oso.Room(
 		300, //width
 		150, //height

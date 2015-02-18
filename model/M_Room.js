@@ -5,15 +5,6 @@ oso.Room = function (width, height, depth, xCoord, yCoord, zCoord, texture) {
 	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, texture);
 
 	this.addWalls(10);
-
-
-
-	// var rightPosFront = -width/2 + width - width/8;
-
-
-
-	
-
 }
 oso.Room.prototype.addEntity = function(entity) {
 	oso.A_Entity.prototype.addEntity.call(this, entity);
@@ -63,8 +54,4 @@ oso.Room.prototype.addWalls = function(wallWidth) {
 	this.addEntity(new oso.Wall(width/2 - doorWidth/2, height, wallWidth, leftFront, 0, front, wallTexture)); //frontLeftwall
 	this.addEntity(new oso.Wall(width/2 - doorWidth/2, height, wallWidth, rightFront, 0, front, wallTexture)); //frontRightwall
 	this.addEntity(new oso.Wall(width, wallWidth, depth, 0, top, 0, wallTexture)); //topwall
-
-
-
-
 };

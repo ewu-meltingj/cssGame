@@ -19,6 +19,9 @@ oso.View.prototype.renderPerson = function(person, scene, camera) {
 			shading: THREE.FlatShading, 
 			overdraw: 0.5
 		});
+		if(person.texture) {
+			material.map = THREE.ImageUtils.loadTexture(person.texture);
+		}
 		person.rendering = new THREE.Mesh( geometry, material );
 		person.rendering.add(camera);
 		camera.lookAt(person.rendering.position);

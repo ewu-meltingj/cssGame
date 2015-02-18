@@ -4,6 +4,8 @@ if(oso === undefined) {var oso = {};}
 oso.Person = function (name, width, height, depth, xCoord, yCoord, zCoord, texture) {
 	this.name = name;
 	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, texture);
+
+	var texture = "assets/images/ground.jpg";
 }
 oso.Person.prototype.addEntity = function(entity) {
 	oso.A_Entity.prototype.addEntity.call(this, entity);
