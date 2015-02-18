@@ -6,7 +6,7 @@ oso.Controller = function (view, person, world) {
 
 	 	if (key == 65) {//left
 	 		person.target = new oso.Point(
-	 			-10 + person.position.x,
+	 			-40 + person.position.x,
 	 			person.position.y,
 	 			person.position.z
 	 		);
@@ -19,7 +19,7 @@ oso.Controller = function (view, person, world) {
 			person.target = new oso.Point(
 	 			person.position.x,
 	 			person.position.y,
-	 			-10 + person.position.z
+	 			-40 + person.position.z
 	 		);
 			// person.target = person.rotation.rotate(-20, person.position);
 			person.hasChanged = true;
@@ -27,7 +27,7 @@ oso.Controller = function (view, person, world) {
 		}
 		else if (key == 68) {//right
 			person.target = new oso.Point(
-	 			+10 + person.position.x,
+	 			+40 + person.position.x,
 	 			person.position.y,
 	 			person.position.z
 	 		);
@@ -39,7 +39,7 @@ oso.Controller = function (view, person, world) {
 			person.target = new oso.Point(
 	 			person.position.x,
 	 			person.position.y,
-	 			+10 + person.position.z
+	 			+40 + person.position.z
 	 		);
 			// person.target = person.rotation.rotate(+20, person.position);
 			person.hasChanged = true;
