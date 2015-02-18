@@ -10,9 +10,17 @@ oso.World = function (name, width, height, depth, texture) {
 
 	var backPos = -(depth + wallWidth)/2;
 	var floor = (-height + wallHeight)/2;
+	var left = -(width + wallWidth)/2 + wallWidth;
+	var right = (width - wallWidth)/2;
+	// var backPos = -(depth + wallWidth)/2;
 
 	var texture = "assets/images/backdrop.jpg";
 	this.addEntity(new oso.Wall(width, wallHeight, wallWidth, 0, floor, backPos, texture)); //backwall
+	this.addEntity(new oso.Wall(wallWidth, wallHeight, depth, left, 0, 0)); //leftwall
+	this.addEntity(new oso.Wall(wallWidth, wallHeight, depth, right, 0, 0));//rightwall
+	this.addEntity(new oso.Wall(width, wallHeight, wallWidth, 0, 0, -backPos));//rightwall
+
+
 
 }
 oso.World.prototype.addEntity = function(entity) {

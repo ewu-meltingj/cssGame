@@ -14,7 +14,6 @@ oso.uniqueID = (function () {
 // A_Entity Model
 oso.A_Entity = function (width, height, depth, xCoord, yCoord, zCoord, texture) {
 	this.id = oso.uniqueID.getID();
-	this.rotation = new oso.Rotation(0);
 	this.dimension = new oso.Dimension(width, height, depth);
 	this.position = new oso.Point(xCoord, yCoord, zCoord)
 	this.target = new oso.Point(xCoord, yCoord, zCoord);
