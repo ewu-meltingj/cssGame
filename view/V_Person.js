@@ -7,6 +7,7 @@ oso.View.prototype.renderPerson = function(person, scene, camera) {
 	person.rendering.position.x = person.position.x;
 	person.rendering.position.y = person.position.y;
 	person.rendering.position.z = person.position.z;
+	person.rendering.rotation.y = person.rotation.radian();
 
 	function render() {
 		var geometry = new THREE.BoxGeometry(

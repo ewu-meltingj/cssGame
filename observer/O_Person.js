@@ -10,13 +10,13 @@ oso.Observer.prototype.updatePerson = function(person, delta) {
 		);
 		this.view.render(person);
 	}
-	else if(!this.world.contains(person)) {
-		person.target = new oso.Point(
-			person.position.x,
-			-60 + person.position.y, 
-			person.position.z
-		);
-	}
+	// else if(!this.world.contains(person)) {
+	// 	person.target = new oso.Point(
+	// 		person.position.x,
+	// 		-60 + person.position.y, 
+	// 		person.position.z
+	// 	);
+	// }
 	else {
 		person.hasChanged = false;
 		this.updateChildren(person, delta);
