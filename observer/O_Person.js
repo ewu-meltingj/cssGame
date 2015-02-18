@@ -3,20 +3,12 @@ if(oso === undefined) {var oso = {};}
 oso.Observer.prototype.updatePerson = function(person, delta) {
 	if(!person.position.equals(person.target)) {
 		person.moveIn(
-			this.world, 
-			computeX()/10000 * delta, 
-			computeY()/10000 * delta, 
-			computeZ()/10000 * delta
+			computeX()/5000 * delta, 
+			computeY()/5000 * delta, 
+			computeZ()/5000 * delta
 		);
 		this.view.render(person);
 	}
-	// else if(!this.world.contains(person)) {
-	// 	person.target = new oso.Point(
-	// 		person.position.x,
-	// 		-60 + person.position.y, 
-	// 		person.position.z
-	// 	);
-	// }
 	else {
 		person.hasChanged = false;
 		this.updateChildren(person, delta);

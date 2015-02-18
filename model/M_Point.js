@@ -12,8 +12,8 @@ oso.Point = function(x, y, z) {
 			value(this.z, point.z) < 0.25
 		);
 
-		function value(x, y) {
-			return Math.abs(x - y);
+		function value(a, b) {
+			return Math.abs(a - b);
 		}
 	}
 }
