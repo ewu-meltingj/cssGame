@@ -1,9 +1,9 @@
 if(oso === undefined) {var oso = {};}
 
 // Person Model
-oso.Person = function (name, width, height, depth, xCoord, yCoord, zCoord) {
+oso.Person = function (name, width, height, depth, xCoord, yCoord, zCoord, texture) {
 	this.name = name;
-	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, "Person");
+	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, texture);
 }
 oso.Person.prototype.addEntity = function(entity) {
 	oso.A_Entity.prototype.addEntity.call(this, entity);

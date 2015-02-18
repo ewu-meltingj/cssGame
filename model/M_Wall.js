@@ -2,7 +2,7 @@ if(oso === undefined) {var oso = {};}
 
 // Wall Model
 oso.Wall = function (width, height, depth, xCoord, yCoord, zCoord, texture) {
-	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, "Wall", texture);
+	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, texture);
 }
 oso.Wall.prototype.addEntity = function(entity) {
 	oso.A_Entity.prototype.addEntity.call(this, entity);

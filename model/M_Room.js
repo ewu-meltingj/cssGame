@@ -1,29 +1,17 @@
 if(oso === undefined) {var oso = {};}
 
 // Room Model
-oso.Room = function (width, height, depth, xCoord, yCoord, zCoord) {
-	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, "Room");
+oso.Room = function (width, height, depth, xCoord, yCoord, zCoord, texture) {
+	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, texture);
 
-	var wallWidth = 10;
-
-	var leftPos = width/2 - width + wallWidth/2;
-	var rightPos = width/2 - wallWidth/2;
-	var backPos = depth/2 - depth - wallWidth/2;
-	var topPos = height/2 - wallWidth/2;
-	var frontPos = depth/2 - wallWidth/2;
-
-	var leftPosFront = width/2 - width + width/8;
-	var rightPosFront = -width/2 + width - width/8;
-
-	var texture = "assets/images/texture.jpg";
+	this.addWalls(10);
 
 
-	this.addEntity(new oso.Wall(wallWidth, height, depth, leftPos, 0, 0, texture)); //leftwall
-	this.addEntity(new oso.Wall(wallWidth, height, depth, rightPos, 0, 0, texture));//rightwall
-	this.addEntity(new oso.Wall(width, height, wallWidth, 0, 0, backPos, texture)); //backwall
-	this.addEntity(new oso.Wall(width/4, height, wallWidth, leftPosFront, 0, frontPos. texture)); //frontLeftwall
-	this.addEntity(new oso.Wall(width/4, height, wallWidth, rightPosFront, 0, frontPos, texture)); //frontRightwall
-	this.addEntity(new oso.Wall(width, wallWidth, depth, 0, topPos, 0, texture)); //topwall
+
+	// var rightPosFront = -width/2 + width - width/8;
+
+
+
 	
 
 }
@@ -51,4 +39,32 @@ oso.Room.prototype.getAbsY = function(entity) {
 };
 oso.Room.prototype.getAbsZ = function(entity) {
 	return oso.A_Entity.prototype.getAbsZ.call(this, entity);
+};
+
+oso.Room.prototype.addWalls = function(wallWidth) {
+	var width = this.dimension.width;
+	var height = this.dimension.height;
+	var depth = this.dimension.depth;
+	var doorWidth = 100;
+
+	var back = depth/2 - depth;
+	var left = -(width + wallWidth)/2 + wallWidth;
+	var right = (width - wallWidth)/2;
+	var front = (depth - wallWidth)/2;
+	var leftFront = -(width - doorWidth)/2;
+	var rightFront = (width - doorWidth)/2;
+	var top = (height - wallWidth)/2;
+
+	var wallTexture = "assets/images/wall.jpg";
+
+	this.addEntity(new oso.Wall(width, height, wallWidth, 0, 0, back, wallTexture)); //backwall
+	this.addEntity(new oso.Wall(wallWidth, height, depth - wallWidth/2, left, 0, 0, wallTexture)); //leftwall
+	this.addEntity(new oso.Wall(wallWidth, height, depth - wallWidth/2, right, 0, 0, wallTexture));//rightwall
+	this.addEntity(new oso.Wall(width/2 - doorWidth/2, height, wallWidth, leftFront, 0, front, wallTexture)); //frontLeftwall
+	this.addEntity(new oso.Wall(width/2 - doorWidth/2, height, wallWidth, rightFront, 0, front, wallTexture)); //frontRightwall
+	this.addEntity(new oso.Wall(width, wallWidth, depth, 0, top, 0, wallTexture)); //topwall
+
+
+
+
 };

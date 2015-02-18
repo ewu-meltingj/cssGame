@@ -5,7 +5,6 @@ oso.Controller = function (view, person, world) {
 	 	var key = e.keyCode ? e.keyCode : e.which;
 
 	 	if (key == 65) {//left
-	 		console.log(person);
 	 		person.target = new oso.Point(
 	 			-10 + person.position.x,
 	 			person.position.y,

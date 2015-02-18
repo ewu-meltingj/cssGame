@@ -1,8 +1,8 @@
 if(oso === undefined) {var oso = {};}
 
 // Door Model
-oso.Door = function (width, height, depth, xCoord, yCoord, zCoord) {
-	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, "Door");
+oso.Door = function (width, height, depth, xCoord, yCoord, zCoord, texture) {
+	oso.A_Entity.call(this, width, height, depth, xCoord, yCoord, zCoord, texture);
 }
 oso.Door.prototype.addEntity = function(entity) {
 	oso.A_Entity.prototype.addEntity.call(this, entity);
