@@ -15,7 +15,7 @@ Standard 'a, s, d, w' keys are defined in the controller.
 * Maintain code readability and organization.
 * Include mobile capabilites.
 
-# app.js
+## demo.js
 ```javscript
 
 var worldHeight = 5;
